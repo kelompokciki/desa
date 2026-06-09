@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Profil Desa Way Ilahan" />
+  <title>Profil Desa - OpenDesa Way Ilahan</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">OpenDesa Way Ilahan</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link active" href="profile.html">Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="apbdes.html">APBDes</a></li>
+          <li class="nav-item"><a class="nav-link" href="berita.html">Berita</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <h2>Profil Desa</h2>
+          <p id="profile-sejarah" class="text-muted"></p>
+          <h5>Visi</h5>
+          <p id="profile-visi"></p>
+          <h5>Misi</h5>
+          <ul id="profile-misi"></ul>
+        </div>
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5>Data Desa</h5>
+              <p><strong>Desa:</strong> Way Ilahan</p>
+              <p><strong>Kecamatan:</strong> Pulau Panggung</p>
+              <p><strong>Kabupaten:</strong> Tanggamus</p>
+              <p><strong>Provinsi:</strong> Lampung</p>
+              <p><strong>Negara:</strong> Indonesia</p>
+            </div>
+          </div>
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h5>Dokumen Publik</h5>
+              <ul class="list-unstyled" id="profile-dokumen"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    loadProfilePage();
+  </script>
+</body>
+</html>

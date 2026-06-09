@@ -1,0 +1,16 @@
+{
+  "name": "OpenDesa Way Ilahan",
+  "short_name": "OpenDesa",
+  "description": "Sistem Informasi Transparansi Desa Way Ilahan",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b6623",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

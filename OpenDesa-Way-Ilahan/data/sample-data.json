@@ -1,0 +1,67 @@
+{
+  "profilDesa": {
+    "namaDesa": "Way Ilahan",
+    "kecamatan": "Pulau Panggung",
+    "kabupaten": "Tanggamus",
+    "provinsi": "Lampung",
+    "visi": "Mewujudkan desa yang mandiri, adil, dan sejahtera melalui tata kelola transparan dan partisipasi masyarakat.",
+    "misi": [
+      "Membangun pelayanan publik yang cepat, tepat, dan ramah.",
+      "Mendorong partisipasi warga dalam perencanaan dan pengawasan pembangunan desa.",
+      "Meningkatkan kemandirian ekonomi masyarakat melalui potensi desa.",
+      "Mengelola keuangan desa secara transparan dan akuntabel."
+    ],
+    "sejarah": "Way Ilahan adalah desa yang berkembang di kaki bukit dan dikenal memiliki budaya gotong royong serta potensi pertanian yang tinggi. Desa ini terus bertransformasi dengan dukungan tata kelola digital."
+  },
+  "penduduk": [
+    { "nama": "Asep Santoso", "nik": "3275010101010001", "jenisKelamin": "Laki-laki", "usia": 34, "pendidikan": "SMA", "pekerjaan": "Petani" },
+    { "nama": "Siti Aminah", "nik": "3275010202020002", "jenisKelamin": "Perempuan", "usia": 29, "pendidikan": "Diploma", "pekerjaan": "Guru" },
+    { "nama": "Joko Prasetyo", "nik": "3275010303030003", "jenisKelamin": "Laki-laki", "usia": 45, "pendidikan": "SD", "pekerjaan": "Pedagang" },
+    { "nama": "Nina Melati", "nik": "3275010404040004", "jenisKelamin": "Perempuan", "usia": 52, "pendidikan": "SMA", "pekerjaan": "Ibu Rumah Tangga" },
+    { "nama": "Udin", "nik": "3275010505050005", "jenisKelamin": "Laki-laki", "usia": 18, "pendidikan": "SMP", "pekerjaan": "Nelayan" }
+  ],
+  "apbdes": [
+    { "tahun": 2024, "pendapatan": 185000000, "belanja": 165000000, "realisasi": 160000000 },
+    { "tahun": 2025, "pendapatan": 205000000, "belanja": 185000000, "realisasi": 178000000 },
+    { "tahun": 2026, "pendapatan": 225000000, "belanja": 195000000, "realisasi": 190000000 }
+  ],
+  "berita": [
+    { "judul": "Musrenbang Desa 2026", "isi": "Musyawarah perencanaan pembangunan desa 2026 berhasil menetapkan prioritas pembangunan infrastruktur dan pelayanan publik.", "tanggal": "2026-02-25", "gambar": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" },
+    { "judul": "Komunitas Pertanian Terima Pelatihan", "isi": "Kelompok tani Way Ilahan mengikuti pelatihan teknologi pertanian modern untuk meningkatkan produktivitas dan kualitas hasil panen.", "tanggal": "2026-03-10", "gambar": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" },
+    { "judul": "Peresmian Posyandu Desa", "isi": "Posyandu desa resmi dioperasikan untuk mendukung layanan kesehatan ibu dan anak, serta memberikan informasi gizi kepada masyarakat.", "tanggal": "2026-04-05", "gambar": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" }
+  ],
+  "pengumuman": [
+    { "judul": "Pengumuman Waktu Layanan", "isi": "Kantor desa melayani masyarakat setiap hari kerja mulai pukul 08.00 hingga 15.00 WIB.", "tanggal": "2026-05-01" },
+    { "judul": "Sosialisasi Program Desa", "isi": "Diharapkan warga hadir dalam sosialisasi program pembangunan dan bantuan sosial pada tanggal 12 Mei 2026.", "tanggal": "2026-05-10" }
+  ],
+  "galeri": [
+    { "judul": "Pelatihan Petani", "gambar": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80", "tanggal": "2026-04-20" },
+    { "judul": "Rapat Desa", "gambar": "https://images.unsplash.com/photo-1560264418-0f8e8cc8f49d?auto=format&fit=crop&w=800&q=80", "tanggal": "2026-03-11" },
+    { "judul": "Posyandu Balita", "gambar": "https://images.unsplash.com/photo-1544176822-7eb5094cab44?auto=format&fit=crop&w=800&q=80", "tanggal": "2026-02-12" }
+  ],
+  "dokumen": [
+    { "nama": "Peraturan Desa 2026", "fileUrl": "https://example.com/perdes-2026.pdf", "kategori": "Peraturan" },
+    { "nama": "APBDes 2026", "fileUrl": "https://example.com/apbdes-2026.pdf", "kategori": "APBDes" },
+    { "nama": "Laporan Tahunan 2025", "fileUrl": "https://example.com/laporan-2025.pdf", "kategori": "Laporan" }
+  ],
+  "agenda": [
+    { "tanggal": "2026-06-17", "kegiatan": "Rapat koordinasi pembangunan irigasi." },
+    { "tanggal": "2026-06-24", "kegiatan": "Sosialisasi layanan kependudukan." },
+    { "tanggal": "2026-07-03", "kegiatan": "Pelatihan UMKM desa." }
+  ],
+  "aparatur": [
+    { "nama": "Budi Santoso", "jabatan": "Kepala Desa", "foto": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" },
+    { "nama": "Rina Dewi", "jabatan": "Sekretaris Desa", "foto": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" },
+    { "nama": "Arianto", "jabatan": "Kasi Pemerintahan", "foto": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" },
+    { "nama": "Suryani", "jabatan": "Kaur Keuangan", "foto": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" }
+  ],
+  "program": [
+    { "nama": "Pembangunan Jalan Desa", "status": "Berjalan", "detail": "Peningkatan akses jalan antar dusun dengan betonisasi." },
+    { "nama": "Rehabilitasi Posyandu", "status": "Selesai", "detail": "Renovasi fasilitas kesehatan balita desa." }
+  ],
+  "aktivitas": [
+    "Admin menambah berita baru pada 5 Juni 2026.",
+    "Data APBDes tahun 2026 diperbarui pada 2 Juni 2026.",
+    "Pengumuman layanan masyarakat dipublikasikan pada 1 Juni 2026."
+  ]
+}

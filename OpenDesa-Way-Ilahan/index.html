@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OpenDesa Way Ilahan - Sistem Informasi Transparansi Desa" />
+  <title>OpenDesa Way Ilahan</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PiWu+PvprK0PFy1Ss6QWqKV5cI6O6QZtY1fVAbCmpCk1xg3JtYgXrM12qh+fJ3Ts" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/css/dataTables.bootstrap5.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="navbar navbar-expand-lg navbar-dark bg-success sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">OpenDesa Way Ilahan</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#statistik">Statistik</a></li>
+          <li class="nav-item"><a class="nav-link" href="#transparansi">Transparansi</a></li>
+          <li class="nav-item"><a class="nav-link" href="#berita">Berita</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero-section text-white text-center py-5" style="background: linear-gradient(135deg, #0b6623 0%, #2c8f3a 100%);">
+      <div class="container">
+        <h1 class="display-5 fw-bold">OpenDesa Way Ilahan</h1>
+        <p class="lead mb-4">Transparan, Digital, dan Melayani Masyarakat</p>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="fs-5">Aplikasi informasi desa modern untuk mendukung transparansi data, keuangan, pelayanan publik, dan pembangunan masyarakat Way Ilahan.</p>
+          </div>
+        </div>
+        <a href="#statistik" class="btn btn-light btn-lg mt-3">Lihat Statistik Desa</a>
+      </div>
+    </section>
+
+    <section id="quick-stats" class="py-5 bg-light">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <div class="col-md-3">
+            <div class="stat-card p-4 rounded shadow-sm bg-white">
+              <h2 id="stat-penduduk">0</h2>
+              <p>Jumlah Penduduk</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card p-4 rounded shadow-sm bg-white">
+              <h2 id="stat-kk">0</h2>
+              <p>Jumlah KK</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card p-4 rounded shadow-sm bg-white">
+              <h2 id="stat-program">0</h2>
+              <p>Program Desa</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card p-4 rounded shadow-sm bg-white">
+              <h2 id="stat-berita">0</h2>
+              <p>Berita Terbaru</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sambutan" class="py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <h2>Sambutan Kepala Desa</h2>
+            <p class="lead">Selamat datang di OpenDesa Way Ilahan. Kami berkomitmen membangun desa yang transparan, akuntabel, dan inklusif dengan akses informasi publik yang mudah dipahami oleh seluruh masyarakat.</p>
+            <p>Melalui sistem ini, warga dapat memantau pembangunan, anggaran desa, layanan publik, serta berpartisipasi dalam pengaduan, aspirasi, dan informasi penting secara real-time.</p>
+          </div>
+          <div class="col-lg-5 text-center">
+            <img src="assets/img/kepala-desa.svg" alt="Kepala Desa" class="img-fluid rounded shadow-sm" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="info-terbaru" class="py-5 bg-light">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div><h3>Informasi Terbaru</h3><p class="text-muted">Berita dan pengumuman penting desa.</p></div>
+          <a class="btn btn-outline-success" href="berita.html">Lihat Semua Berita</a>
+        </div>
+        <div id="berita-list" class="row g-4"></div>
+      </div>
+    </section>
+
+    <section id="agenda" class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h3>Agenda Desa</h3>
+            <ul class="list-group" id="agenda-list"></ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-success shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Pelayanan Publik</h5>
+                <p class="card-text">Online 24/7 untuk pengajuan surat, pengaduan, aspirasi, dan dokumentasi desa.</p>
+                <a href="kontak.html" class="btn btn-success">Kontak Desa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="profil" class="py-5 bg-white">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <h3>Profil Desa</h3>
+            <p id="sejarah" class="text-muted"></p>
+            <p><strong>Nama Desa:</strong> Way Ilahan</p>
+            <p><strong>Kecamatan:</strong> Pulau Panggung</p>
+            <p><strong>Kabupaten:</strong> Tanggamus</p>
+            <p><strong>Provinsi:</strong> Lampung</p>
+            <p><strong>Negara:</strong> Indonesia</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-success shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Visi</h5>
+                <p id="visi" class="card-text"></p>
+                <h5 class="card-title mt-4">Misi</h5>
+                <ul id="misi-list" class="list-group list-group-flush"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="struktur" class="py-5 bg-light">
+      <div class="container">
+        <h3 class="mb-4">Struktur Organisasi</h3>
+        <img src="assets/img/struktur-organisasi.svg" alt="Struktur Organisasi Desa" class="img-fluid rounded shadow-sm" />
+      </div>
+    </section>
+
+    <section id="peta" class="py-5">
+      <div class="container">
+        <h3 class="mb-4">Peta Wilayah</h3>
+        <div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.0000000000005!2d105.00000000000001!3d-6.000000000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDAnMDAuMCJTIDEwNcKwMDAnMDAuMCJF!5e0!3m2!1sid!2sid!4v0000000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="potensi" class="py-5 bg-white">
+      <div class="container">
+        <h3 class="mb-4">Potensi Desa</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card border-success h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Pertanian</h5>
+                <p class="card-text">Komoditas unggulan: padi, kopi, dan sayuran.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-success h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Kehutanan</h5>
+                <p class="card-text">Sumber daya hutan yang mendukung ekonomi lokal.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-success h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Wisata</h5>
+                <p class="card-text">Destinasi alam dan budaya yang terus dikembangkan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="statistik" class="py-5 bg-light">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h3>Data Penduduk</h3>
+            <div class="row g-3">
+              <div class="col-6"><div class="card p-3 shadow-sm"><p class="mb-1 text-muted">Jumlah Penduduk</p><h4 id="card-penduduk">0</h4></div></div>
+              <div class="col-6"><div class="card p-3 shadow-sm"><p class="mb-1 text-muted">Jumlah KK</p><h4 id="card-kk">0</h4></div></div>
+              <div class="col-6"><div class="card p-3 shadow-sm"><p class="mb-1 text-muted">Pendidikan</p><h4 id="card-pendidikan">0</h4></div></div>
+              <div class="col-6"><div class="card p-3 shadow-sm"><p class="mb-1 text-muted">Pekerjaan</p><h4 id="card-pekerjaan">0</h4></div></div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <canvas id="pendudukChart" height="240"></canvas>
+          </div>
+        </div>
+        <div class="row g-4 mt-4">
+          <div class="col-lg-6">
+            <div class="card p-4 shadow-sm">
+              <h5>Statistik Pendidikan</h5>
+              <canvas id="pendidikanChart" height="200"></canvas>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card p-4 shadow-sm">
+              <h5>Statistik Pekerjaan</h5>
+              <canvas id="pekerjaanChart" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="aparatur" class="py-5 bg-white">
+      <div class="container">
+        <h3 class="mb-4">Aparatur Desa</h3>
+        <div class="row g-4" id="aparatur-list"></div>
+      </div>
+    </section>
+
+    <section id="transparansi" class="py-5 bg-light">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h3>Transparansi Keuangan</h3>
+            <p class="text-muted">APBDes, pendapatan, belanja, dan realisasi anggaran.</p>
+          </div>
+          <a class="btn btn-outline-success" href="apbdes.html">Lihat Detail APBDes</a>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="card p-4 shadow-sm">
+              <h6>Pendapatan</h6>
+              <p class="h4" id="total-pendapatan">Rp0</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card p-4 shadow-sm">
+              <h6>Belanja</h6>
+              <p class="h4" id="total-belanja">Rp0</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card p-4 shadow-sm">
+              <h6>Realisasi</h6>
+              <p class="h4" id="total-realisasi">Rp0</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 card p-4 shadow-sm">
+          <canvas id="keuanganChart" height="180"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="program" class="py-5 bg-white">
+      <div class="container">
+        <h3 class="mb-4">Program dan Kegiatan Desa</h3>
+        <div class="row g-4" id="program-list"></div>
+      </div>
+    </section>
+
+    <section id="galeri" class="py-5 bg-light">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div><h3>Galeri Kegiatan</h3><p class="text-muted">Foto dan dokumentasi terbaru desa.</p></div>
+          <a class="btn btn-outline-success" href="galeri.html">Lebih Banyak Foto</a>
+        </div>
+        <div class="row g-4" id="galeri-list"></div>
+      </div>
+    </section>
+
+    <section id="dokumen" class="py-5 bg-white">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div><h3>Dokumen Publik</h3><p class="text-muted">Peraturan desa, APBDes, laporan tahunan, dan dokumen penting.</p></div>
+          <a class="btn btn-outline-success" href="dokumen.html">Download Dokumen</a>
+        </div>
+        <div class="row g-4" id="dokumen-list"></div>
+      </div>
+    </section>
+
+    <section id="kontak" class="py-5 bg-success text-white">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h3>Hubungi Desa Way Ilahan</h3>
+            <p>Alamat kantor desa, WhatsApp, email, dan kontak layanan masyarakat tersedia untuk memudahkan komunikasi.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a href="kontak.html" class="btn btn-light btn-lg">Kontak Desa</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <p class="mb-1">© 2026 OpenDesa Way Ilahan</p>
+      <p class="small mb-0">Sistem Informasi Transparansi Data, Keuangan, dan Pelayanan Publik Desa Way Ilahan</p>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Pj5NlL1NTrVblhYX4WPpP2rI+uhiYaM0F1BiMvPb2pS6rPhm7ZjXz6f3liXjI1zw" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="firebase/firebase-config.js"></script>
+  <script src="firebase/auth.js"></script>
+  <script src="firebase/firestore.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    loadHomepage();
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('assets/js/sw.js'));
+    }
+  </script>
+</body>
+</html>

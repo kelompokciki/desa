@@ -1,0 +1,87 @@
+:root {
+  --bg: #f7f9f6;
+  --surface: #ffffff;
+  --surface-strong: #e8f3e9;
+  --text: #1c2d23;
+  --muted: #5a6b5c;
+  --primary: #0b6623;
+  --primary-soft: #2c8f3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--primary);
+}
+
+.navbar .navbar-brand {
+  font-weight: 700;
+}
+
+.hero-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card {
+  border: 1px solid rgba(11, 102, 35, 0.12);
+}
+
+.card {
+  border: none;
+}
+
+.card .card-body {
+  padding: 1.5rem;
+}
+
+section {
+  position: relative;
+}
+
+section h2,
+section h3,
+section h5 {
+  color: var(--primary);
+}
+
+.list-group-item {
+  border: 1px solid rgba(11, 102, 35, 0.12);
+}
+
+footer {
+  background: #132615;
+}
+
+#newsCards .card img,
+#galleryGrid img {
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.btn-outline-success {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-success:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+    min-height: 50vh;
+  }
+}
