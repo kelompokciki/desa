@@ -30,8 +30,11 @@ Lalu buka `http://localhost:8000`.
 
 ## Deployment GitHub Pages
 
-- Letakkan semua file dalam branch `main` atau `gh-pages`.
-- Aktifkan GitHub Pages di repository dengan folder root atau `docs/` jika diperlukan.
+- Website sekarang sudah siap di-Deploy dari branch `main`.
+- GitHub Actions akan otomatis menerbitkan konten root ke Pages.
+- Pastikan GitHub Pages di repository diatur ke branch `gh-pages` (jika menggunakan deployment otomatis) atau root `main`.
+
+> URL publik: `https://kelompokciki.github.io/desa/`
 
 ## Firebase
 
