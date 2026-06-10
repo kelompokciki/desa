@@ -1,13 +1,14 @@
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDNIonfNn2ExQEEZP3B0htm7MaXadsrLkA",
+  authDomain: "desa-way-ilahan.firebaseapp.com",
+  projectId: "desa-way-ilahan",
+  storageBucket: "desa-way-ilahan.firebasestorage.app",
+  messagingSenderId: "922136307379",
+  appId: "1:922136307379:web:0d03828481049cb0d9f2c6",
+  measurementId: "G-YB3LQ58Q1F"
 };
 
-const isFirebaseConfigValid = () => {
+const isFirebaseConfigValid = () => {   
   return (
     typeof firebaseConfig.apiKey === 'string' &&
     firebaseConfig.apiKey.length > 10 &&

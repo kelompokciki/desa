@@ -46,21 +46,43 @@
     redirectIfAuthenticated();
     document.getElementById('loginForm').addEventListener('submit', async (event) => {
       event.preventDefault();
-      const email = document.getElementById('email').value;
+      const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
       const alertBox = document.getElementById('loginAlert');
+      alertBox.classList.add('d-none');
+
+      // Basic client-side validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alertBox.textContent = 'Masukkan email yang valid.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+      if (!password || password.length < 6) {
+        alertBox.textContent = 'Password minimal 6 karakter.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+
+      // Check Firebase config / mock availability
+      if (typeof isFirebaseConfigValid === 'function' && !isFirebaseConfigValid() && !window.__FIREBASE_MOCK) {
+        alertBox.textContent = 'Layanan auth belum tersedia (Firebase belum dikonfigurasi). Hubungi administrator atau gunakan mode pengembangan.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+
       try {
         const result = await signIn(email, password);
-        if (isAdminUser(result.user)) {
+        if (typeof isAdminUser === 'function' && isAdminUser(result.user)) {
           window.location.href = 'admin/dashboard.html';
         } else {
           window.location.href = 'index.html';
         }
       } catch (error) {
-        if (error.code === 'auth/invalid-api-key') {
-          alertBox.textContent = 'Firebase belum dikonfigurasi. Periksa file firebase/firebase-config.js dan ganti placeholder dengan API key yang valid.';
+        if (error && error.code === 'auth/invalid-api-key') {
+          alertBox.textContent = 'Firebase belum dikonfigurasi dengan API key yang valid. Untuk pengembangan gunakan mock atau isi konfigurasi Firebase.';
         } else {
-          alertBox.textContent = error.message || 'Login gagal. Periksa kembali kredensial Anda.';
+          alertBox.textContent = (error && error.message) ? error.message : 'Login gagal. Periksa kembali kredensial Anda.';
         }
         alertBox.classList.remove('d-none');
       }

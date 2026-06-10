@@ -56,8 +56,28 @@
       const alertBox = document.getElementById('registerAlert');
 
       alertBox.classList.add('d-none');
+
+      // Basic validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alertBox.textContent = 'Masukkan email yang valid.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+      if (!password || password.length < 6) {
+        alertBox.textContent = 'Password minimal 6 karakter.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
       if (password !== confirmPassword) {
         alertBox.textContent = 'Password dan konfirmasi tidak cocok.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+
+      // Check Firebase config / mock availability
+      if (typeof isFirebaseConfigValid === 'function' && !isFirebaseConfigValid() && !window.__FIREBASE_MOCK) {
+        alertBox.textContent = 'Layanan auth belum tersedia (Firebase belum dikonfigurasi). Hubungi administrator atau jalankan mode pengembangan.';
         alertBox.classList.remove('d-none');
         return;
       }
@@ -66,10 +86,10 @@
         await signUp(email, password);
         window.location.href = 'index.html';
       } catch (error) {
-        if (error.code === 'auth/invalid-api-key') {
-          alertBox.textContent = 'Firebase belum dikonfigurasi. Periksa file firebase/firebase-config.js dan ganti placeholder dengan API key yang valid.';
+        if (error && error.code === 'auth/invalid-api-key') {
+          alertBox.textContent = 'Firebase belum dikonfigurasi dengan API key yang valid. Gunakan mode mock atau isi konfigurasi Firebase.';
         } else {
-          alertBox.textContent = error.message || 'Pendaftaran gagal. Periksa kembali data Anda.';
+          alertBox.textContent = (error && error.message) ? error.message : 'Pendaftaran gagal. Periksa kembali data Anda.';
         }
         alertBox.classList.remove('d-none');
       }
