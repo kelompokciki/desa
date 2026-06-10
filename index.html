@@ -28,6 +28,9 @@
           <li class="nav-item"><a class="nav-link" href="#berita">Berita</a></li>
           <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
           <li class="nav-item"><a class="nav-link" href="login.html">Admin</a></li>
+          <li class="nav-item">
+            <button id="logoutBtnPage" class="btn btn-outline-light btn-sm d-none ms-2">Keluar</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -43,7 +46,8 @@
             <p class="fs-5">Aplikasi informasi desa modern untuk mendukung transparansi data, keuangan, pelayanan publik, dan pembangunan masyarakat Way Ilahan.</p>
           </div>
         </div>
-        <a href="#statistik" class="btn btn-light btn-lg mt-3">Lihat Statistik Desa</a>
+        <a href="login.html" class="btn btn-light btn-lg mt-3 me-2">Login / Daftar</a>
+        <a href="#statistik" class="btn btn-outline-light btn-lg mt-3">Lihat Statistik Desa</a>
       </div>
     </section>
 
@@ -334,6 +338,7 @@
   <script src="firebase/firestore.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
+    protectSiteRoute();
     loadHomepage();
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('assets/js/sw.js'));

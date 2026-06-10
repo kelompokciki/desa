@@ -426,3 +426,9 @@ window.loadAdminUsersPage = loadAdminUsersPage;
 if (document.body.contains(document.getElementById('pendudukChart')) || document.body.contains(document.getElementById('dashboardChart'))) {
   loadHomepage();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof setupAuthNavbar === 'function') {
+    setupAuthNavbar();
+  }
+});
