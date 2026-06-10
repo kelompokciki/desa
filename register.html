@@ -66,7 +66,11 @@
         await signUp(email, password);
         window.location.href = 'index.html';
       } catch (error) {
-        alertBox.textContent = error.message || 'Pendaftaran gagal. Periksa kembali data Anda.';
+        if (error.code === 'auth/invalid-api-key') {
+          alertBox.textContent = 'Firebase belum dikonfigurasi. Periksa file firebase/firebase-config.js dan ganti placeholder dengan API key yang valid.';
+        } else {
+          alertBox.textContent = error.message || 'Pendaftaran gagal. Periksa kembali data Anda.';
+        }
         alertBox.classList.remove('d-none');
       }
     });

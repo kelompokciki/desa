@@ -57,7 +57,11 @@
           window.location.href = 'index.html';
         }
       } catch (error) {
-        alertBox.textContent = error.message || 'Login gagal. Periksa kembali kredensial Anda.';
+        if (error.code === 'auth/invalid-api-key') {
+          alertBox.textContent = 'Firebase belum dikonfigurasi. Periksa file firebase/firebase-config.js dan ganti placeholder dengan API key yang valid.';
+        } else {
+          alertBox.textContent = error.message || 'Login gagal. Periksa kembali kredensial Anda.';
+        }
         alertBox.classList.remove('d-none');
       }
     });
