@@ -40,3 +40,16 @@ Lalu buka `http://localhost:8000`.
 
 - Isi konfigurasi Firebase di `OpenDesa-Way-Ilahan/firebase/firebase-config.js`.
 - Gunakan Firestore collection sesuai struktur yang ada pada data sample.
+
+## Development (local, tanpa Firebase)
+
+- Jika Anda belum mengisi konfigurasi Firebase, aplikasi akan otomatis menjalankan "mock auth" untuk pengembangan lokal.
+- Mode mock menyimpan akun pengguna di `localStorage` (key `mock_users`) dan status login di `sessionStorage` (key `mock_current_user`).
+- Cara cepat untuk mencoba:
+
+```bash
+python3 -m http.server 8000
+# buka http://localhost:8000/register.html untuk mendaftar akun (mock)
+```
+
+- Untuk produksi, ganti placeholder di `firebase/firebase-config.js` dengan konfigurasi Firebase Anda.

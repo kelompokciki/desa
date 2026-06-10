@@ -431,4 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof setupAuthNavbar === 'function') {
     setupAuthNavbar();
   }
+  if (typeof setupMockResetButton === 'function') {
+    setupMockResetButton();
+  }
 });
