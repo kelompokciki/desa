@@ -345,6 +345,67 @@ async function loadAdminDocumentsPage() {
   }
 }
 
+async function loadAdminAnnouncementPage() {
+  const data = await loadData();
+  const rows = document.getElementById('adminAnnouncementRows');
+  rows.innerHTML = data.pengumuman.map((item) => `
+    <tr>
+      <td>${item.judul}</td>
+      <td>${item.tanggal}</td>
+      <td>${item.isi}</td>
+    </tr>
+  `).join('');
+  if (window.$ && window.$.fn.dataTable) {
+    $('#adminAnnouncementTable').DataTable();
+  }
+}
+
+async function loadAdminGalleryPage() {
+  const data = await loadData();
+  const rows = document.getElementById('adminGalleryRows');
+  rows.innerHTML = data.galeri.map((item) => `
+    <tr>
+      <td>${item.judul}</td>
+      <td>${item.tanggal}</td>
+      <td><a href="${item.gambar}" target="_blank">Lihat</a></td>
+    </tr>
+  `).join('');
+  if (window.$ && window.$.fn.dataTable) {
+    $('#adminGalleryTable').DataTable();
+  }
+}
+
+async function loadAdminComplaintsPage() {
+  const data = await loadData();
+  const rows = document.getElementById('adminComplaintsRows');
+  rows.innerHTML = data.pengaduan.map((item) => `
+    <tr>
+      <td>${item.nama}</td>
+      <td>${item.tanggal}</td>
+      <td>${item.pesan}</td>
+      <td>${item.status}</td>
+    </tr>
+  `).join('');
+  if (window.$ && window.$.fn.dataTable) {
+    $('#adminComplaintsTable').DataTable();
+  }
+}
+
+async function loadAdminUsersPage() {
+  const data = await loadData();
+  const rows = document.getElementById('adminUsersRows');
+  rows.innerHTML = data.pengguna.map((item) => `
+    <tr>
+      <td>${item.nama}</td>
+      <td>${item.email}</td>
+      <td>${item.role}</td>
+    </tr>
+  `).join('');
+  if (window.$ && window.$.fn.dataTable) {
+    $('#adminUsersTable').DataTable();
+  }
+}
+
 window.loadHomepage = loadHomepage;
 window.loadProfilePage = loadProfilePage;
 window.loadApbdesPage = loadApbdesPage;
@@ -357,6 +418,10 @@ window.loadAdminPendudukPage = loadAdminPendudukPage;
 window.loadAdminApbdesPage = loadAdminApbdesPage;
 window.loadAdminNewsPage = loadAdminNewsPage;
 window.loadAdminDocumentsPage = loadAdminDocumentsPage;
+window.loadAdminAnnouncementPage = loadAdminAnnouncementPage;
+window.loadAdminGalleryPage = loadAdminGalleryPage;
+window.loadAdminComplaintsPage = loadAdminComplaintsPage;
+window.loadAdminUsersPage = loadAdminUsersPage;
 
 if (document.body.contains(document.getElementById('pendudukChart')) || document.body.contains(document.getElementById('dashboardChart'))) {
   loadHomepage();

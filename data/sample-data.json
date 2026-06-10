@@ -63,5 +63,13 @@
     "Admin menambah berita baru pada 5 Juni 2026.",
     "Data APBDes tahun 2026 diperbarui pada 2 Juni 2026.",
     "Pengumuman layanan masyarakat dipublikasikan pada 1 Juni 2026."
+  ],
+  "pengaduan": [
+    { "nama": "Andi Saputra", "tanggal": "2026-05-20", "pesan": "Jalan rusak di RT 05 belum diperbaiki.", "status": "Diproses" },
+    { "nama": "Maya Wardani", "tanggal": "2026-05-23", "pesan": "Permintaan paten lampu jalan di dusun 2.", "status": "Selesai" }
+  ],
+  "pengguna": [
+    { "nama": "Super Admin", "email": "superadmin@wayilahan.id", "role": "SUPER ADMIN" },
+    { "nama": "Admin Desa", "email": "admin@wayilahan.id", "role": "ADMIN" }
   ]
 }
