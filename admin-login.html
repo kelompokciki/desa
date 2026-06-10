@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin Login - OpenDesa Way Ilahan" />
+  <title>Admin Login - OpenDesa Way Ilahan</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #0b6623 0%, #1b8a3a 50%, #2c8f3a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .admin-login-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .admin-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 2rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      animation: slideUp 0.8s ease-out;
+    }
+
+    .admin-card-header {
+      background: linear-gradient(135deg, #0b6623 0%, #1b8a3a 100%);
+      padding: 2.5rem 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .admin-card-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .admin-card-header::after {
+      content: '';
+      position: absolute;
+      bottom: -50%;
+      left: -50%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .admin-header-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .admin-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.5rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .admin-header-content h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .admin-header-content p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      margin: 0;
+    }
+
+    .admin-card-body {
+      padding: 3rem 2.5rem;
+    }
+
+    .admin-form-section {
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease-out 0.3s backwards;
+    }
+
+    .admin-form-section:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .admin-form-label {
+      font-weight: 700;
+      color: #0b6623;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .admin-form-label i {
+      font-size: 1.1rem;
+    }
+
+    .admin-input-group {
+      position: relative;
+    }
+
+    .admin-input {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3.2rem;
+      border: 2px solid rgba(11, 102, 35, 0.15);
+      border-radius: 1rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: rgba(245, 247, 250, 0.5);
+      color: #1a2332;
+    }
+
+    .admin-input:focus {
+      outline: none;
+      border-color: #0b6623;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(11, 102, 35, 0.1);
+    }
+
+    .admin-input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #0b6623;
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+
+    .admin-btn-login {
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, #0b6623 0%, #1b8a3a 100%);
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 8px 24px rgba(11, 102, 35, 0.3);
+      animation: fadeInUp 0.8s ease-out 0.7s backwards;
+    }
+
+    .admin-btn-login:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(11, 102, 35, 0.4);
+      background: linear-gradient(135deg, #064c1a 0%, #0b6623 100%);
+    }
+
+    .admin-btn-login:active {
+      transform: translateY(-1px);
+    }
+
+    .admin-alert {
+      border-radius: 1rem;
+      border: 2px solid rgba(239, 68, 68, 0.2);
+      background: rgba(239, 68, 68, 0.08);
+      color: #7f1d1d;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      animation: slideInDown 0.4s ease-out;
+    }
+
+    .admin-footer-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(11, 102, 35, 0.1);
+      animation: fadeInUp 0.8s ease-out 0.9s backwards;
+    }
+
+    .admin-link {
+      color: #0b6623;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .admin-link:hover {
+      color: #1b8a3a;
+      gap: 0.5rem;
+    }
+
+    .badge-admin {
+      display: inline-block;
+      background: linear-gradient(135deg, #0b6623 0%, #1b8a3a 100%);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .background-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.1;
+      border-radius: 50%;
+    }
+
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      background: white;
+      top: -100px;
+      right: -100px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape-2 {
+      width: 200px;
+      height: 200px;
+      background: white;
+      bottom: -50px;
+      left: -50px;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-card {
+        border-radius: 1.5rem;
+        margin: 1rem;
+      }
+
+      .admin-card-header {
+        padding: 2rem 1.5rem;
+      }
+
+      .admin-card-body {
+        padding: 2rem 1.5rem;
+      }
+
+      .admin-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+      }
+
+      .admin-header-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .admin-footer-links {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </div>
+
+  <div class="container admin-login-container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-header-content">
+              <div class="admin-icon">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h2>Admin Portal</h2>
+              <p>OpenDesa Way Ilahan</p>
+              <span class="badge-admin">ADMINISTRATOR</span>
+            </div>
+          </div>
+
+          <div class="admin-card-body">
+            <div id="adminAlert" class="admin-alert d-none" role="alert"></div>
+
+            <form id="adminLoginForm">
+              <div class="admin-form-section">
+                <label for="adminEmail" class="admin-form-label">
+                  <i class="bi bi-envelope-lock-fill"></i>
+                  Email Administrator
+                </label>
+                <div class="admin-input-group">
+                  <i class="bi bi-shield-lock admin-input-icon"></i>
+                  <input
+                    type="email"
+                    id="adminEmail"
+                    class="admin-input"
+                    placeholder="admin@wayilahan.id"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="admin-form-section">
+                <label for="adminPassword" class="admin-form-label">
+                  <i class="bi bi-key-fill"></i>
+                  Password Keamanan
+                </label>
+                <div class="admin-input-group">
+                  <i class="bi bi-key admin-input-icon"></i>
+                  <input
+                    type="password"
+                    id="adminPassword"
+                    class="admin-input"
+                    placeholder="••••••••"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="admin-btn-login">
+                <i class="bi bi-box-arrow-in-right"></i>
+                Masuk ke Dashboard
+              </button>
+            </form>
+
+            <div class="admin-footer-links">
+              <a href="login.html" class="admin-link">
+                <i class="bi bi-arrow-left"></i>
+                User Biasa
+              </a>
+              <a href="index.html" class="admin-link">
+                <i class="bi bi-house-fill"></i>
+                Beranda
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="firebase/firebase-config.js"></script>
+  <script src="firebase/auth.js"></script>
+  <script>
+    redirectIfAuthenticated();
+    document.getElementById('adminLoginForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = document.getElementById('adminEmail').value.trim();
+      const password = document.getElementById('adminPassword').value;
+      const alertBox = document.getElementById('adminAlert');
+      alertBox.classList.add('d-none');
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alertBox.textContent = '❌ Masukkan email yang valid.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+      if (!password || password.length < 6) {
+        alertBox.textContent = '❌ Password minimal 6 karakter.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+
+      if (typeof isFirebaseConfigValid === 'function' && !isFirebaseConfigValid() && !window.__FIREBASE_MOCK) {
+        alertBox.textContent = '❌ Layanan auth belum tersedia. Hubungi administrator.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+
+      try {
+        const result = await signIn(email, password);
+        if (typeof isAdminUser === 'function' && isAdminUser(result.user)) {
+          window.location.href = 'admin/dashboard.html';
+        } else {
+          alertBox.textContent = '❌ Akun Anda bukan administrator. Gunakan login biasa.';
+          alertBox.classList.remove('d-none');
+        }
+      } catch (error) {
+        if (error && error.code === 'auth/invalid-api-key') {
+          alertBox.textContent = '❌ Firebase belum dikonfigurasi. Gunakan mode mock atau isi konfigurasi Firebase.';
+        } else {
+          alertBox.textContent = (error && error.message) ? `❌ ${error.message}` : '❌ Login gagal. Periksa kembali kredensial Anda.';
+        }
+        alertBox.classList.remove('d-none');
+      }
+    });
+  </script>
+</body>
+</html>

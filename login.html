@@ -3,53 +3,411 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Login Administrator OpenDesa Way Ilahan" />
-  <title>Login Admin - OpenDesa Way Ilahan</title>
+  <meta name="description" content="Login Masyarakat - OpenDesa Way Ilahan" />
+  <title>Login Masyarakat - OpenDesa Way Ilahan</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .public-login-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .public-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 60px rgba(11, 102, 35, 0.15);
+      border: 1px solid rgba(11, 102, 35, 0.1);
+      overflow: hidden;
+      animation: slideUp 0.8s ease-out;
+    }
+
+    .public-card-header {
+      background: linear-gradient(135deg, #0b6623 0%, #2c8f3a 100%);
+      padding: 2rem 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .public-card-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .public-header-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .public-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .public-header-content h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    .public-header-content p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .public-card-body {
+      padding: 2.5rem 2rem;
+    }
+
+    .public-form-section {
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease-out 0.3s backwards;
+    }
+
+    .public-form-section:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .public-form-label {
+      font-weight: 600;
+      color: #0b6623;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .public-input {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 2.8rem;
+      border: 2px solid rgba(11, 102, 35, 0.12);
+      border-radius: 0.9rem;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      background: rgba(245, 247, 250, 0.5);
+      color: #1a2332;
+      position: relative;
+    }
+
+    .public-input:focus {
+      outline: none;
+      border-color: #0b6623;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(11, 102, 35, 0.1);
+    }
+
+    .public-input-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #0b6623;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .public-input-group {
+      position: relative;
+    }
+
+    .public-btn-login {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #0b6623 0%, #2c8f3a 100%);
+      color: white;
+      border: none;
+      border-radius: 0.9rem;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      box-shadow: 0 6px 20px rgba(11, 102, 35, 0.25);
+      animation: fadeInUp 0.8s ease-out 0.5s backwards;
+      margin-bottom: 1rem;
+    }
+
+    .public-btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(11, 102, 35, 0.3);
+    }
+
+    .public-alert {
+      border-radius: 0.9rem;
+      border: 2px solid rgba(239, 68, 68, 0.2);
+      background: rgba(239, 68, 68, 0.08);
+      color: #7f1d1d;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      animation: slideInDown 0.4s ease-out;
+      font-size: 0.9rem;
+    }
+
+    .public-footer-text {
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out 0.7s backwards;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(11, 102, 35, 0.1);
+    }
+
+    .public-footer-text p {
+      margin: 0.5rem 0;
+      font-size: 0.85rem;
+    }
+
+    .public-link {
+      color: #0b6623;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .public-link:hover {
+      color: #1b8a3a;
+      text-decoration: underline;
+    }
+
+    .admin-switch {
+      animation: fadeInUp 0.8s ease-out 0.6s backwards;
+      text-align: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(11, 102, 35, 0.1);
+    }
+
+    .admin-switch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(11, 102, 35, 0.08);
+      color: #0b6623;
+      border: 2px solid rgba(11, 102, 35, 0.15);
+      border-radius: 0.75rem;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .admin-switch-btn:hover {
+      background: rgba(11, 102, 35, 0.12);
+      border-color: #0b6623;
+      transform: translateY(-2px);
+    }
+
+    .background-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.08;
+      border-radius: 50%;
+    }
+
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      background: #0b6623;
+      top: 10%;
+      right: 10%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape-2 {
+      width: 150px;
+      height: 150px;
+      background: #0b6623;
+      bottom: 10%;
+      left: 10%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .public-card {
+        margin: 1rem;
+      }
+
+      .public-card-header {
+        padding: 1.5rem;
+      }
+
+      .public-card-body {
+        padding: 1.5rem;
+      }
+
+      .public-header-content h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
 </head>
-<body style="background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%); min-height: 100vh; display: flex; align-items: center;">
-  <div class="container">
+<body>
+  <div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </div>
+
+  <div class="container public-login-container">
     <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-5">
-        <div class="card shadow-lg border-0" style="border-radius: 1.5rem; background: rgba(255, 255, 255, 0.98);">
-          <div class="card-body p-5">
-            <div class="text-center mb-4">
-              <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #0b6623 0%, #2c8f3a 100%); border-radius: 1rem; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
-                <i class="bi bi-shield-lock" style="font-size: 1.8rem; color: white;"></i>
+      <div class="col-md-5 col-lg-4">
+        <div class="public-card">
+          <div class="public-card-header">
+            <div class="public-header-content">
+              <div class="public-icon">
+                <i class="bi bi-person-check"></i>
               </div>
-              <h3 class="card-title mb-2" style="color: #0b6623; font-weight: 800;">Login Akun</h3>
-              <p class="text-muted small">OpenDesa Way Ilahan</p>
-            </div>
-            <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 2rem;">Masuk menggunakan akun warga untuk mengakses informasi desa. Jika Anda admin, gunakan akun admin untuk mengelola data.</p>
-            <form id="loginForm">
-              <div class="mb-3">
-                <label for="email" class="form-label" style="font-weight: 600; color: #1a2332;">Email</label>
-                <div class="input-group">
-                  <span class="input-group-text" style="border: 2px solid rgba(11, 102, 35, 0.1); background: transparent;">
-                    <i class="bi bi-envelope-at" style="color: #0b6623;"></i>
-                  </span>
-                  <input type="email" id="email" class="form-control" style="border: 2px solid rgba(11, 102, 35, 0.1);" placeholder="admin@wayilahan.id" required />
-                </div>
-              </div>
-              <div class="mb-4">
-                <label for="password" class="form-label" style="font-weight: 600; color: #1a2332;">Password</label>
-                <div class="input-group">
-                  <span class="input-group-text" style="border: 2px solid rgba(11, 102, 35, 0.1); background: transparent;">
-                    <i class="bi bi-key" style="color: #0b6623;"></i>
-                  </span>
-                  <input type="password" id="password" class="form-control" style="border: 2px solid rgba(11, 102, 35, 0.1);" placeholder="********" required />
-                </div>
-              </div>
-              <button type="submit" class="btn btn-success w-100" style="font-weight: 600; padding: 0.85rem; border-radius: 0.75rem; background: linear-gradient(135deg, #0b6623 0%, #2c8f3a 100%);">Masuk</button>
-            </form>
-            <div id="loginAlert" class="alert alert-danger mt-3 d-none" role="alert" style="border-radius: 0.75rem; border: 2px solid rgba(239, 68, 68, 0.2);"></div>
-            <div class="mt-4 pt-3 text-center" style="border-top: 1px solid rgba(11, 102, 35, 0.1);">
-              <p class="small mb-2">Belum punya akun? <a href="register.html" style="color: #0b6623; font-weight: 600;">Daftar akun warga</a></p>
-              <a href="index.html" style="color: #6b7280; font-weight: 500; text-decoration: none;">Kembali ke Beranda</a>
+              <h2>Login Masyarakat</h2>
+              <p>OpenDesa Way Ilahan</p>
             </div>
           </div>
+
+          <div class="public-card-body">
+            <div id="loginAlert" class="public-alert d-none" role="alert"></div>
+
+            <form id="loginForm">
+              <div class="public-form-section">
+                <label for="email" class="public-form-label">
+                  <i class="bi bi-envelope"></i>
+                  Email Akun
+                </label>
+                <div class="public-input-group">
+                  <i class="bi bi-envelope public-input-icon"></i>
+                  <input
+                    type="email"
+                    id="email"
+                    class="public-input"
+                    placeholder="nama@domain.id"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="public-form-section">
+                <label for="password" class="public-form-label">
+                  <i class="bi bi-lock"></i>
+                  Password
+                </label>
+                <div class="public-input-group">
+                  <i class="bi bi-lock public-input-icon"></i>
+                  <input
+                    type="password"
+                    id="password"
+                    class="public-input"
+                    placeholder="••••••••"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="public-btn-login">
+                <i class="bi bi-door-open"></i>
+                Masuk
+              </button>
+            </form>
+
+            <div class="public-footer-text">
+              <p>Belum punya akun?</p>
+              <p><a href="register.html" class="public-link">Daftar di sini</a></p>
+            </div>
+
+            <div class="admin-switch">
+              <p style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">Administrator?</p>
+              <a href="admin-login.html" class="admin-switch-btn">
+                <i class="bi bi-shield-check"></i>
+                Admin Portal
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="index.html" style="color: #0b6623; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.3rem; animation: fadeInUp 0.8s ease-out 0.8s backwards;">
+            <i class="bi bi-arrow-left"></i>
+            Kembali ke Beranda
+          </a>
         </div>
       </div>
     </div>
@@ -68,22 +426,20 @@
       const alertBox = document.getElementById('loginAlert');
       alertBox.classList.add('d-none');
 
-      // Basic client-side validation
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
-        alertBox.textContent = 'Masukkan email yang valid.';
+        alertBox.textContent = '❌ Masukkan email yang valid.';
         alertBox.classList.remove('d-none');
         return;
       }
       if (!password || password.length < 6) {
-        alertBox.textContent = 'Password minimal 6 karakter.';
+        alertBox.textContent = '❌ Password minimal 6 karakter.';
         alertBox.classList.remove('d-none');
         return;
       }
 
-      // Check Firebase config / mock availability
       if (typeof isFirebaseConfigValid === 'function' && !isFirebaseConfigValid() && !window.__FIREBASE_MOCK) {
-        alertBox.textContent = 'Layanan auth belum tersedia (Firebase belum dikonfigurasi). Hubungi administrator atau gunakan mode pengembangan.';
+        alertBox.textContent = '❌ Layanan auth belum tersedia. Hubungi administrator.';
         alertBox.classList.remove('d-none');
         return;
       }
@@ -91,15 +447,16 @@
       try {
         const result = await signIn(email, password);
         if (typeof isAdminUser === 'function' && isAdminUser(result.user)) {
-          window.location.href = 'admin/dashboard.html';
+          alertBox.textContent = '❌ Akun Anda adalah administrator. Gunakan Admin Portal.';
+          alertBox.classList.remove('d-none');
         } else {
           window.location.href = 'index.html';
         }
       } catch (error) {
         if (error && error.code === 'auth/invalid-api-key') {
-          alertBox.textContent = 'Firebase belum dikonfigurasi dengan API key yang valid. Untuk pengembangan gunakan mock atau isi konfigurasi Firebase.';
+          alertBox.textContent = '❌ Firebase belum dikonfigurasi. Gunakan mode mock atau isi konfigurasi Firebase.';
         } else {
-          alertBox.textContent = (error && error.message) ? error.message : 'Login gagal. Periksa kembali kredensial Anda.';
+          alertBox.textContent = (error && error.message) ? `❌ ${error.message}` : '❌ Login gagal. Periksa kembali kredensial Anda.';
         }
         alertBox.classList.remove('d-none');
       }
